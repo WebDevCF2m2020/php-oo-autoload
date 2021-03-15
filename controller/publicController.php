@@ -6,6 +6,16 @@ $sectionsForMenu = $TheSectionManager->getAllWithoutTheSectionDesc();
 // si on essaie de se connecter
 if(isset($_GET['p'])&&$_GET['p']==="connect"){
     
+    // si on a envoyé le formulaire
+    if(!empty($_POST)){
+        $theUserInstance = new TheUser($_POST);
+        $recup = $TheUserManager->connectTheUser($theUserInstance);
+        // on s'est correctement connecté
+        if(array_key_exists(0,$recup)){
+            var_dump($_SESSION);
+            // ON EST ICI
+        }
+    }
     
     echo $twig->render("publicView/connect_public.html.twig",["menu"=>$sectionsForMenu]);
     exit();
