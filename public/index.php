@@ -53,6 +53,7 @@ try{
 // Managers communs à tous les publics (ou rôles)
 $TheSectionManager = new TheSectionManager($myConnect);
 $TheNewsManager = new TheNewsManager($myConnect);
+$TheUserManager = new TheUserManager($myConnect);
 
 
 // Contrôleur publique (pour l'affichage du site lorsqu'on est pas connecté)

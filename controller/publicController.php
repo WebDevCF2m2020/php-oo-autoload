@@ -13,7 +13,9 @@ if(isset($_GET['p'])&&$_GET['p']==="connect"){
         // on s'est correctement connecté
         if(array_key_exists(0,$recup)){
             var_dump($_SESSION);
+
             // ON EST ICI
+
         }
     }
     
