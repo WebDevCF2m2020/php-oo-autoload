@@ -51,5 +51,13 @@ class TheUserManager extends ManagerAbstract implements ManagerInterface {
             return [2=>$ex->getMessage()];
         }
     }
+     protected function sessionStartTheUser(TheUser $user){
+        $_SESSION['idtheUser'] = $user->getIdtheUser();
+        $_SESSION['theUserLogin'] = $user->getTheUserLogin();
+        $_SESSION['theUserMail'] = $user->getTheUserMail();
+        $_SESSION['theRoleName'] = $user->theRoleName();
+        $_SESSION['theRoleValue'] = $user->theRoleValue();
+        $_SESSION['IdMySESSION'] = session_id();
+    }
 
 }
