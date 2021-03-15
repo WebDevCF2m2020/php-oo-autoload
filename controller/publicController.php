@@ -6,6 +6,8 @@ $sectionsForMenu = $TheSectionManager->getAllWithoutTheSectionDesc();
 // si on essaie de se connecter
 if(isset($_GET['p'])&&$_GET['p']==="connect"){
     
+    
+    echo $twig->render("publicView/connect_public.html.twig",["menu"=>$sectionsForMenu]);
     exit();
 }
 
