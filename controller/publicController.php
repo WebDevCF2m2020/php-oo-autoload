@@ -3,6 +3,12 @@
 // récupération des sections pour le menu
 $sectionsForMenu = $TheSectionManager->getAllWithoutTheSectionDesc();
 
+// si on essaie de se connecter
+if(isset($_GET['p'])&&$_GET['p']==="connect"){
+    
+    exit();
+}
+
 // si on veut voir le détail d'une rubrique et ses articles
 if(isset($_GET['section'])&& ctype_digit($_GET['section'])){
     
