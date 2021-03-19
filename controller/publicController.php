@@ -3,6 +3,30 @@
 // récupération des sections pour le menu
 $sectionsForMenu = $TheSectionManager->getAllWithoutTheSectionDesc();
 
+// si on essaie de se connecter
+if(isset($_GET['p'])&&$_GET['p']==="connect"){
+    
+    // si on a envoyé le formulaire
+    if(!empty($_POST)){
+        $theUserInstance = new TheUser($_POST);
+        $recup = $TheUserManager->connectTheUser($theUserInstance);
+        // on s'est correctement connecté
+        if(array_key_exists(0,$recup)){
+
+            // redirection sur le contrôleur frontal
+            header("Location : ./");
+            exit();    
+
+        }elseif(array_key_exists(1,$recup)){
+            echo $twig->render("publicView/connect_public.html.twig",["menu"=>$sectionsForMenu,"erreur"=>$recup[1]]);
+            exit();
+        }
+    }
+    
+    echo $twig->render("publicView/connect_public.html.twig",["menu"=>$sectionsForMenu]);
+    exit();
+}
+
 // si on veut voir le détail d'une rubrique et ses articles
 if(isset($_GET['section'])&& ctype_digit($_GET['section'])){
     
