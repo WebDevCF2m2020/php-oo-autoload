@@ -55,6 +55,11 @@ $TheSectionManager = new TheSectionManager($myConnect);
 $TheNewsManager = new TheNewsManager($myConnect);
 $TheUserManager = new TheUserManager($myConnect);
 
-
-// Contrôleur publique (pour l'affichage du site lorsqu'on est pas connecté)
-require_once "../controller/publicController.php";
+// No valid connection
+if(!isset($_SESSION['IdMySESSION'])|| $_SESSION['IdMySESSION']!= session_id()){
+    // Contrôleur publique (pour l'affichage du site lorsqu'on est pas connecté)
+    require_once "../controller/publicController.php";
+// Valid connection    
+}else{
+    require_once "../controller/adminController.php";
+}
