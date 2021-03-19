@@ -12,10 +12,14 @@ if(isset($_GET['p'])&&$_GET['p']==="connect"){
         $recup = $TheUserManager->connectTheUser($theUserInstance);
         // on s'est correctement connecté
         if(array_key_exists(0,$recup)){
-            var_dump($_SESSION);
 
-            // ON EST ICI
+            // redirection sur le contrôleur frontal
+            header("Location : ./");
+            exit();    
 
+        }elseif(array_key_exists(1,$recup)){
+            echo $twig->render("publicView/connect_public.html.twig",["menu"=>$sectionsForMenu,"erreur"=>$recup[1]]);
+            exit();
         }
     }
     
