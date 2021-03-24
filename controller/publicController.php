@@ -14,7 +14,7 @@ if(isset($_GET['p'])&&$_GET['p']==="connect"){
         if(array_key_exists(0,$recup)){
 
             // redirection sur le contrôleur frontal
-            header("Location : ./");
+            header("Location: ./");
             exit();    
 
         }elseif(array_key_exists(1,$recup)){
